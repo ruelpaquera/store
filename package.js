@@ -1,7 +1,8 @@
 Package.describe({
   name: "ground:store",
   version: "0.0.0",
-  summary: "Adds Store scope"
+  summary: "Adds Store scope",
+  git: "https://github.com/GroundMeteor/store.git"
 });
 
 Package.on_use(function (api) {
