@@ -5,19 +5,19 @@ Package.describe({
   git: "https://github.com/GroundMeteor/store.git"
 });
 
-Package.on_use(function (api) {
+Package.onUse(function (api) {
 
-  api.versionsFrom && api.versionsFrom('METEOR@0.9.1');
+  api.versionsFrom && api.versionsFrom('1.0');
 
   api.export('Store');
 
-  api.add_files('storage.scope.js', ['client', 'server']);
+  api.addFiles('storage.scope.js', ['client', 'server']);
 
-  api.add_files('client.js', 'client');
+  api.addFiles('client.js', 'client');
 
 });
 
-Package.on_test(function (api) {
+Package.onTest(function (api) {
   if (api.versionsFrom) {
     api.use('ground:store', ['client', 'server']);
   } else {
@@ -26,6 +26,6 @@ Package.on_test(function (api) {
   api.use('test-helpers', 'client');
   api.use(['tinytest', 'underscore', 'ejson']);
 
-  api.add_files('scope.tests.js', 'server');
+  api.addFiles('scope.tests.js', 'server');
 
 });
