@@ -17,7 +17,9 @@ var _getTheBestStorageAdapterAvailable = function() {
     var surgestion = _rankedStorageAdapterList[i];
 
     // If the storage is found then this must be the best storage adapter
-    if (Store[surgestion]) return surgestion;
+    if (Store[surgestion]) {
+      return surgestion;
+    }
   }
 
   // Got nothing, we return null
@@ -26,7 +28,7 @@ var _getTheBestStorageAdapterAvailable = function() {
 
 // This function will return the name of the passed in storage adapter
 var _getStorageNameFromStorageAdapter = function(storageAdapterInstance) {
-  
+
   // Iterate over the ranked list of storge adapters
   for (var i = 0; i <_rankedStorageAdapterList.length; i++) {
 
@@ -41,12 +43,14 @@ var _getStorageNameFromStorageAdapter = function(storageAdapterInstance) {
 
       // check if the handed objectis an instance of the storage adapter, if so
       // return the storage adapter name
-      if (storageAdapterInstance instanceof StorageAdapter)
+      if (storageAdapterInstance instanceof StorageAdapter) {
         return storageAdapterName;
+      }
 
       // We could add a === check allowing a class check
-      if (storageAdapterInstance === StorageAdapter)
+      if (storageAdapterInstance === StorageAdapter) {
         return storageAdapterName;
+      }
 
     }
   }
@@ -67,7 +71,9 @@ Store.getStorage = function(name /* Optional */) {
 
   // Check if name is set and is a string, if not set it to the best storage
   // adapter available
-  if (name !== ''+name) name = _getTheBestStorageAdapterAvailable();
+  if (name !== ''+name) {
+    name = _getTheBestStorageAdapterAvailable();
+  }
 
   // Return the storage by name, if none found then return noop
   return Store[name] || function() {};
@@ -76,7 +82,7 @@ Store.getStorage = function(name /* Optional */) {
 
 // Returns an instance of the best possible storage
 Store.create = function(options) {
-  
+
   // Get the best storage available
   var storage = Store.getStorage();
 
